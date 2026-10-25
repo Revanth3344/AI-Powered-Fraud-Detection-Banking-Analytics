@@ -218,3 +218,36 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# BankSphere: environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+secrets/
+instance/
+
+# Local Python environments
+.venv/
+venv/
+env/
+
+# Python cache and logs
+__pycache__/
+*.py[cod]
+*.log
+
+# Local datasets: do not upload automatically
+dataset.csv
+dataset.xlsx
+*.csv
+
+# Local database exports and backups
+*.sql
+*.sqlite
+*.db
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
