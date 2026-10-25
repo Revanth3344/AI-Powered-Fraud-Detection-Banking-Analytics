@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}Overview{% endblock %} · BankSphere</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"><script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head><body><div class="shell"><aside class="sidebar"><a class="brand" href="/"><span class="logo">B</span><span>Bank<span class="lav">Sphere</span><small>INTELLIGENCE SUITE</small></span></a><div class="navlabel">WORKSPACE</div><nav><a class="{{'active' if page=='dashboard' else ''}}" href="/">◫ <span>Overview</span></a><a class="{{'active' if page=='transactions' else ''}}" href="/transactions">⇄ <span>Transactions</span></a><a class="{{'active' if page=='alerts' else ''}}" href="/alerts">◉ <span>Fraud alerts</span><i></i></a><a class="{{'active' if page=='explain' else ''}}" href="/explain">✧ <span>AI explainability</span></a><a class="{{'active' if page=='analytics' else ''}}" href="/analytics">▥ <span>Analytics</span></a></nav><div class="sidebottom"><div class="connected"><i></i><span><b>System monitor</b><small>Database connection</small></span></div><small class="sidefoot">BANKSPHERE · v1.0<br>AI-powered banking intelligence</small></div></aside><main><header class="top"><div><small>FRAUD INTELLIGENCE PLATFORM</small><h2>{% block heading %}Overview{% endblock %}</h2></div><div class="online"><i></i> SYSTEM ONLINE <span class="avatar">BS</span></div></header>
+{% set page_quote = {
+  'transactions': 'Not all treasure is silver and gold, mate.',
+  'alerts': 'Why is the rum always gone?',
+  'explain': 'Savvy?',
+  'analytics': 'A pirate’s life for me.'
+}.get(page) %}
+{% if page_quote %}
+<section class="cinema-quote" aria-label="Page quote">
+  <span class="cinema-quote__text">{{ page_quote }}</span>
+</section>
+{% endif %}
+{% if error %}<div class="error"><b>Could not load database data</b><br>{{error}}<small>Check MySQL is running and database settings in app.py.</small></div>{% endif %}{% block content %}{% endblock %}<footer>BankSphere · AI-Powered Fraud Detection & Banking Analytics <span>Secure, data-driven banking</span></footer></main></div>{% block scripts %}{% endblock %}
+    <!-- BankSphere Neural Orbit Cursor -->
+    <div class="neural-cursor" aria-hidden="true">
+      <span class="neural-cursor__core"></span>
+      <span class="neural-cursor__ring"></span>
+    </div>
+    <div class="cursor-ripple-layer" aria-hidden="true"></div>
+
+<!-- Persistent BOB companion -->
+<aside class="bob-companion" aria-live="polite" aria-atomic="true">
+  <span class="bob-avatar" aria-hidden="true"><svg viewBox="0 0 48 48" role="presentation"><path d="M13 5 L35 5 L43 15 L40 32 L24 44 L8 32 L5 15 Z" fill="#c92335" stroke="#f04b56" stroke-width="1.5"/><path d="M12 14 L20 16 L22 25 L17 29 L11 24 Z M36 14 L28 16 L26 25 L31 29 L37 24 Z" fill="#10131d"/><path d="M20 16 L28 16 L26 25 L22 25 Z" fill="#f5f0e8" opacity=".9"/></svg></span>
+  <span class="bob-copy">
+    <span class="bob-label"><b>BOB</b></span>
+    <span class="bob-message" id="bob-message">Hey, amigo! BOB here.</span>
+  </span>
+  <button class="bob-dismiss" type="button" aria-label="Dismiss BOB message" title="Dismiss">×</button>
+</aside>
+<script src="{{url_for('static',filename='js/app.js')}}"></script>
+</body></html>
